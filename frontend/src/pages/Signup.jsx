@@ -1,8 +1,8 @@
 // frontend/src/pages/Signup.jsx
 import React, { useState } from 'react';
 import { Button, TextField, Heading, Flex, Box, Text } from '@radix-ui/themes';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from "../components/common/Header";
+import Footer from "../components/common/Footer";
 
 const Signup = () => {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
