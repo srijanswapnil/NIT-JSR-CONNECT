@@ -5,7 +5,7 @@ import { Container, Flex, Box, Text, Button } from '@radix-ui/themes';
 
 const App = () => {
   return (
-    <Container size="3">
+   <>
       <Flex justify="between" align="center" p="3" style={{ borderBottom: '1px solid #eee' }}>
         <Text size="5" weight="bold">NIT JSR</Text>
         <Flex gap="3">
@@ -18,7 +18,8 @@ const App = () => {
       <Box pt="4">
         <Outlet />
       </Box>
-    </Container>
+      </>
+   
   );
 };
 

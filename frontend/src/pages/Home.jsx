@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white px-6 py-20">
+    <div className="min-h-screen w-full bg-black text-white px-6 py-20">
       <header className="flex justify-between items-center mb-20">
         <Heading size="6">NIT JSR Freshers Hub</Heading>
         <nav>
