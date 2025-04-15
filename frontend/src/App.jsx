@@ -1,26 +1,18 @@
-// frontend/src/App.jsx
-import React from 'react';
-import { Outlet, Link } from 'react-router-dom';
-import { Container, Flex, Box, Text, Button } from '@radix-ui/themes';
-
-const App = () => {
+// src/App.jsx
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
+import Home from './pages/Home'
+function App() {
   return (
-   <>
-      <Flex justify="between" align="center" p="3" style={{ borderBottom: '1px solid #eee' }}>
-        <Text size="5" weight="bold">NIT JSR</Text>
-        <Flex gap="3">
-          <Link to="/">Home</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </Flex>
-      </Flex>
-
-      <Box pt="4">
-        <Outlet />
-      </Box>
-      </>
-   
+    <>
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+    </>
   );
-};
+}
 
 export default App;

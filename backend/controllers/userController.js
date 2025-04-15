@@ -2,9 +2,14 @@ const User = require('../Model/userModel.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-// Register User
+
 const registerUser = async (req, res) => {
   const { name, email, phone, password } = req.body;
+
+  if (!name || !email || !phone || !password) {
+    return res.status(400).json({ message: 'Please fill all the fields' });
+  }
+  
 
   const userExists = await User.findOne({ phone });
   if (userExists) {
@@ -42,6 +47,9 @@ const authUser = async (req, res) => {
   
     const user = await User.findOne({ phone });
   
+    if (!phone || !password) {
+      return res.status(400).json({ message: 'Please fill all the fields' });
+    }
     if (user && (await bcrypt.compare(password, user.password))) {
       res.json({
         _id: user._id,

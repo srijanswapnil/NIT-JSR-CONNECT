@@ -1,6 +1,6 @@
 // frontend/src/pages/Listing.jsx
 import React, { useState, useEffect } from 'react';
-import { Card, Heading, Text, Flex, Button, Box } from '@radix-ui/themes';
+import { Card, Heading, Text, div, Button, div } from '@radix-ui/themes';
 import axios from 'axios';
 
 const Listing = () => {
@@ -20,9 +20,9 @@ const Listing = () => {
   }, []);
 
   return (
-    <Box>
+    <div>
       <Heading size="7" mb="4">📦 Items for Exchange / Donation</Heading>
-      <Flex wrap="wrap" gap="4">
+      <div wrap="wrap" gap="4">
         {items.length === 0 ? (
           <Text>No items listed yet.</Text>
         ) : (
@@ -35,8 +35,8 @@ const Listing = () => {
             </Card>
           ))
         )}
-      </Flex>
-    </Box>
+      </div>
+    </div>
   );
 };
 

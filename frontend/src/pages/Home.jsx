@@ -1,55 +1,111 @@
-import { Button, Card, Flex, Heading, Text } from "@radix-ui/themes";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Heading } from '@radix-ui/themes';
 
-export default function Home() {
+import Header from '../components/common/Header';
+import Footer from '../components/common/Footer';
+const Home = () => {
   return (
+    <>
+    <Header/>
     <div className="min-h-screen w-full bg-black text-white px-6 py-20">
-      <header className="flex justify-between items-center mb-20">
+      <div className="div justify-between items-center mb-20">
         <Heading size="6">NIT JSR Freshers Hub</Heading>
         <nav>
-          <Flex gap="4">
-            <Link to="/login"><Button variant="surface" color="gray">Login</Button></Link>
-            <Link to="/signup"><Button variant="solid" color="crimson">Sign Up</Button></Link>
-          </Flex>
-        </nav>
-      </header>
-
-      <main className="grid lg:grid-cols-2 gap-24 items-start">
-        <section className="flex flex-col justify-center h-full">
-          <Heading size="7" className="mb-8">Start exploring your college now</Heading>
-          <Text size="4" className="mb-10 block">
-            Your all-in-one platform to navigate through academics, sports, societies, campus news, rumors,
-            and much more. Designed specially for freshers of NIT Jamshedpur.
-          </Text>
-          <div>
-            <Link to="/signup">
-              <Button size="4" variant="solid" color="crimson">Get Started</Button>
-            </Link>
+          <div gap="4">
+            <a href="/login"><Button variant="surface" color="gray">Login</Button></a>
+            <a href="/signup"><Button variant="solid" color="crimson">Sign Up</Button></a>
           </div>
-        </section>
+        </nav>
+      </div>
+      
+    <section className="py-5 bg-light text-dark min-vh-100">
+      <Container>
+        {/* Header + Main Action Buttons */}
+        <div className="text-center mb-5">
+          <h1 className="display-5 fw-bold">Welcome to NITJSR Connect</h1>
+          <p className="lead">Bridging students through services, stories, and shared experiences.</p>
 
-        <section className="grid gap-10">
-          <Card className="bg-zinc-900 p-6">
-            <Heading size="4" className="mb-2">Community Market</Heading>
-            <Text>Buy, sell, or exchange books, sports gear, or accessories with your college mates.</Text>
-          </Card>
+          <div className="d-div justify-content-center div-wrap gap-3 my-4">
+            <Button as={Link} to="/contact" variant="primary" size="lg">
+              Contact Us
+            </Button>
+            <Button as={Link} to="/about" variant="outline-primary" size="lg">
+              Learn More
+            </Button>
+          </div>
+        </div>
 
-          <Card className="bg-zinc-900 p-6">
-            <Heading size="4" className="mb-2">Student Insights</Heading>
-            <Text>Discover experiences, tips, and hacks shared by your seniors.</Text>
-          </Card>
+        {/* Services Section */}
+        <Row className="g-4 mb-5">
+          {[
+            {
+              title: 'Community Market',
+              desc: 'Buy, sell, or exchange books, sports gear, or accessories with your college mates.',
+              link: '/services/community-market',
+            },
+            {
+              title: 'Student Insights',
+              desc: 'Discover experiences, tips, and hacks shared by your seniors.',
+              link: '/services/student-insights',
+            },
+            {
+              title: 'Campus Guide',
+              desc: 'From academic blocks to hidden canteens – explore every corner of NITJSR.',
+              link: '/services/campus-guide',
+            },
+            {
+              title: 'Latest Buzz',
+              desc: 'Stay updated with campus events, society activities, and viral rumors.',
+              link: '/services/latest-buzz',
+            },
+          ].map((service, index) => (
+            <Col md={6} key={index}>
+              <div className="p-4 bg-white rounded shadow-sm service-card h-100">
+                <h5 className="fw-bold">{service.title}</h5>
+                <p>{service.desc}</p>
+                <Button as={Link} to={service.link} variant="outline-dark" size="sm">
+                  View More
+                </Button>
+              </div>
+            </Col>
+          ))}
+        </Row>
 
-          <Card className="bg-zinc-900 p-6">
-            <Heading size="4" className="mb-2">Campus Guide</Heading>
-            <Text>From academic blocks to hidden canteens – explore every corner of NITJSR.</Text>
-          </Card>
+        {/* ✅ Clubs & Societies + Resources Side-by-Side */}
+        <Row className="mb-5 g-4">
+          {/* Clubs & Societies */}
+          <Col md={6}>
+            <div className="p-4 bg-white rounded shadow-sm service-card h-100">
+              <h5 className="fw-bold">Clubs & Societies</h5>
+              <p>Explore the heart of student life – join technical, cultural, and social clubs across campus.</p>
+              <Button as={Link} to="/services/clubs-societies" variant="outline-dark" size="sm">
+                Explore Clubs
+              </Button>
+            </div>
+          </Col>
 
-          <Card className="bg-zinc-900 p-6">
-            <Heading size="4" className="mb-2">Latest Buzz</Heading>
-            <Text>Stay updated with campus events, society activities, and viral rumors.</Text>
-          </Card>
-        </section>
-      </main>
+          {/* Resources Section */}
+          <Col md={6}>
+            <div className="p-4 bg-white rounded shadow-sm service-card h-100">
+              <h5 className="fw-bold mb-3">Resources</h5>
+              <div className="d-div div-wrap gap-3">
+                {["Lecture Notes", "Exam Papers", "Books", "Important Links"].map((item, idx) => (
+                  <Button key={idx} variant="outline-dark" className="div-grow-1">
+                    {item}
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </section>
     </div>
+    <Footer/>
+    </>
   );
 }
+
+export default Home;

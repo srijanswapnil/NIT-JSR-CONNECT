@@ -1,64 +1,47 @@
 // frontend/src/pages/Signup.jsx
 import React, { useState } from 'react';
-import { Button, TextField, Heading, Flex, Box, Text } from '@radix-ui/themes';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import axios from '../axios'
+import Header from "../components/common/Header";
+import Footer from "../components/common/Footer";
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
-  const [form, setForm] = useState({ name: '', email: '', password: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', password: '' });
   const [error, setError] = useState('');
+  const navigate=useNavigate()
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const handleChange=(e)=>{
+    setFormData({...formData,[e.target.name]:e.target.value})
+  }
 
-  const handleSignup = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!form.email.endsWith('@nitjsr.ac.in')) {
-      setError('Only @nitjsr.ac.in email is allowed');
-      return;
+    setError('');
+    try {
+      const { data } = await axios.post('/api/user', formData); // adjust URL if needed
+      localStorage.setItem('userInfo', JSON.stringify(data));
+      navigate('/');
+    } catch (err) {
+      setError(err.response?.data?.message || 'Signup failed');
     }
-
-    // TODO: Add API call to backend
-    console.log('Signing up with:', form);
   };
+  
 
   return (
     <>
       <Header />
-      <Box maxWidth="400px" mx="auto" p="4">
-        <Heading mb="4">Sign Up</Heading>
-        {error && <Text color="red">{error}</Text>}
-        <form onSubmit={handleSignup}>
-          <Flex direction="column" gap="3">
-            <TextField.Input
-              placeholder="Name"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              required
-            />
-            <TextField.Input
-              placeholder="Email (use @nitjsr.ac.in)"
-              name="email"
-              type="email"
-              value={form.email}
-              onChange={handleChange}
-              required
-            />
-            <TextField.Input
-              placeholder="Password"
-              name="password"
-              type="password"
-              value={form.password}
-              onChange={handleChange}
-              required
-            />
-            <Button type="submit">Sign Up</Button>
-          </Flex>
-        </form>
-      </Box>
+      <div className="container mt-5" style={{ maxWidth: '500px' }}>
+      <h2 className="mb-4">Signup</h2>
+      {error && <div className="alert alert-danger">{error}</div>}
+      <form onSubmit={handleSubmit}>
+        <input name="name" placeholder="Name" className="form-control mb-2" onChange={handleChange} required />
+        <input name="email" placeholder="Email" type="email" className="form-control mb-2" onChange={handleChange} required />
+        <input name="phone" placeholder="Phone" className="form-control mb-2" onChange={handleChange} required />
+        <input name="password" placeholder="Password" type="password" className="form-control mb-3" onChange={handleChange} required />
+        <button type="submit" className="btn btn-primary w-100">Sign Up</button>
+      </form>
+    </div>
       <Footer />
     </>
   );
