@@ -13,7 +13,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-dark text-light pt-5 pb-4 mt-5 border-top border-secondary">
+    <footer className="bg-dark text-light pt-5 pb-4 border-top border-secondary">
       <div className="container">
         <div className="row g-5">
           {/* Branding & Mission */}
