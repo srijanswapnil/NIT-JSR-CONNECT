@@ -1,21 +1,31 @@
-// src/App.jsx
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
-import Home from './pages/Home'
+import React from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import Header from './components/common/Header';
+import Footer from './components/common/Footer';
+import Home from './pages/Home';
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
 import MapPage from './pages/MapPage';
-import StudentInsights from './pages/StudentInsights';
-function App() {
+const App = () => {
+  const location = useLocation();
+
+  // Define routes where Footer should be hidden
+  const hideFooterRoutes = ['/login','/signup'];
+
+  const shouldShowFooter = !hideFooterRoutes.includes(location.pathname);
+
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path='/map' element={<MapPage/>}/>
-        <Route path='/insights' element={<StudentInsights/>}/>
-      </Routes>
+      <Header />
+      <main className="flex-fill mb-0">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/map" element={<MapPage />} />
+        </Routes>
+      </main>
+      {shouldShowFooter && <Footer />}
     </>
   );
 }
