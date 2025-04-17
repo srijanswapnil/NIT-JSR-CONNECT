@@ -37,7 +37,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Services Section */}
+        
         <Row className="g-4 mb-5">
           {[
             {
@@ -48,12 +48,12 @@ const Home = () => {
             {
               title: 'Student Insights',
               desc: 'Discover experiences, tips, and hacks shared by your seniors.',
-              link: '/services/student-insights',
+              link: '/insights',
             },
             {
               title: 'Campus Guide',
               desc: 'From academic blocks to hidden canteens – explore every corner of NITJSR.',
-              link: '/services/campus-guide',
+              link: '/map',
             },
             {
               title: 'Latest Buzz',
