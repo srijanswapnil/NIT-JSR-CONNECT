@@ -10,15 +10,7 @@ const Home = () => {
     <>
     <Header/>
     <div className="min-h-screen w-full bg-black text-white px-6 py-20">
-      <div className="div justify-between items-center mb-20">
-        <Heading size="6">NIT JSR Freshers Hub</Heading>
-        <nav>
-          <div gap="4">
-            <a href="/login"><Button variant="surface" color="gray">Login</Button></a>
-            <a href="/signup"><Button variant="solid" color="crimson">Sign Up</Button></a>
-          </div>
-        </nav>
-      </div>
+      
       
     <section className="py-5 bg-light text-dark min-vh-100">
       <Container>
