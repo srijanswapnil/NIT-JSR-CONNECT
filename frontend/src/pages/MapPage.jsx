@@ -3,7 +3,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
-
+import React from 'react';
 const MapPage = () => {
   useEffect(() => {
     // Set map to NIT Jamshedpur
@@ -44,7 +44,7 @@ const MapPage = () => {
 
   return (
     <>
-    <Header />
+   
     
     <div className="m-4 flex justify-center">
       <div className="w-full max-w-6xl bg-white shadow-xl rounded-2xl p-4">
@@ -57,7 +57,7 @@ const MapPage = () => {
       </div>
     </div>
     
-    <Footer />
+  
   </>
   
   );

@@ -11,7 +11,11 @@
     div-shadow: 0 0.25rem 0.75rem rgba(13, 110, 253, 0.08); /* Softer shadow */
   }
   
+  .navbar-nav .nav-link:hover {
+    color: #eb9310 !important;
+  }
   
+
   .footer-link {
     display: inline-block;
     color: #f8f9fa; /* Light text */
@@ -26,4 +30,16 @@
   }
   
 
+  .custom-bg {
+    background-image: url('/images/background.jpg'); /* adjust path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100%;
+    color: #000;
+    border-radius: 10px;
+    
+  }
+
+ 
   
