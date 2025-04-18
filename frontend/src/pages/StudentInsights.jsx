@@ -3,7 +3,7 @@ import axios from '../axios'
 
 const StudentInsights = () => {
 
-    const [insights,]
+    const [insights,setInsights]=useState([])
   return (
     <div className="px-4 sm:px-6 lg:px-8 py-12 max-w-6xl mx-auto">
       <h1 className="text-4xl font-extrabold mb-4 text-center text-gray-800">
